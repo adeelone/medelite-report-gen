@@ -1,3 +1,4 @@
+import React from "react";
 import type { FacilityData, ManualInputs } from "@/lib/types";
 
 const claimOrder = [

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import type { FormEvent } from "react";
 import type { ManualInputs } from "@/lib/types";
 

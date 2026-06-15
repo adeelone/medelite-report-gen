@@ -1,3 +1,4 @@
+import React from "react";
 import type { FacilityData } from "@/lib/types";
 
 type Props = {
