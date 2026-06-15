@@ -1,0 +1,242 @@
+:root {
+  --bg: #f7f8fb;
+  --panel: #ffffff;
+  --ink: #172033;
+  --muted: #687185;
+  --line: #d8dde8;
+  --accent: #0f766e;
+  --accent-dark: #115e59;
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 42px;
+  padding: 0 16px;
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-dark);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.appShell {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(340px, 430px) minmax(520px, 1fr);
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.controlColumn,
+.previewPanel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.controlColumn {
+  align-self: start;
+  display: grid;
+  gap: 20px;
+  padding: 22px;
+}
+
+.headerBlock,
+.brandBlock {
+  text-align: center;
+}
+
+.brandName,
+.brandBlock div {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+h1,
+.brandBlock strong {
+  display: block;
+  font-size: 15px;
+  margin: 6px 0 4px;
+}
+
+.headerBlock span,
+.brandBlock span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.formPanel {
+  display: grid;
+  gap: 18px;
+}
+
+.manualGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 6px;
+}
+
+label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+input,
+select {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  min-height: 42px;
+  padding: 9px 11px;
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  outline: 2px solid rgba(15, 118, 110, 0.16);
+}
+
+.lookupLine {
+  display: grid;
+  grid-template-columns: 1fr 118px;
+  gap: 10px;
+}
+
+.errorText {
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.exportBar {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 10px;
+  padding-top: 18px;
+}
+
+.metricCards {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metricCard {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  display: grid;
+  gap: 6px;
+  min-height: 76px;
+  padding: 12px;
+}
+
+.metricCard span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.metricCard strong {
+  color: var(--accent-dark);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.previewPanel {
+  min-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 28px;
+}
+
+.brandBlock {
+  margin-bottom: 22px;
+}
+
+.snapshotTable {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.snapshotTable th,
+.snapshotTable td {
+  border: 1px solid #9ca3af;
+  font-size: 14px;
+  line-height: 1.35;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.snapshotTable th {
+  background: #f3f4f6;
+  width: 42%;
+}
+
+.emptyState {
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  padding: 28px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .appShell {
+    padding: 14px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .previewPanel {
+    min-height: auto;
+    padding: 18px;
+  }
+}

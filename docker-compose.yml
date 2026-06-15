@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    environment:
+      CMS_API_BASE_URL: ${CMS_API_BASE_URL:-https://data.cms.gov/provider-data/api/1/datastore/query}
+      CMS_PROVIDER_DATASET_ID: ${CMS_PROVIDER_DATASET_ID:-4pq5-n9py}
+      CMS_CLAIMS_DATASET_ID: ${CMS_CLAIMS_DATASET_ID:-ijh5-nb2v}
+      CMS_STATE_AVERAGES_DATASET_ID: ${CMS_STATE_AVERAGES_DATASET_ID:-xcdc-v8bm}
+      APPLY_CASE_REFERENCE_SNAPSHOT: ${APPLY_CASE_REFERENCE_SNAPSHOT:-true}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
