@@ -1,6 +1,6 @@
 # Medelite Facility Assessment Report Generator
 
-Internal micro-app for looking up CMS nursing home data by CCN, combining it with Medelite operational inputs, and exporting a branded facility assessment snapshot.
+Lookup CMS nursing home data by CCN, add Medelite operational inputs, and export a branded facility assessment snapshot.
 
 ## Docker Quickstart
 

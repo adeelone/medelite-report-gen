@@ -22,9 +22,10 @@ type Props = {
 };
 
 export function ReportPreview({ facility, manual }: Props) {
+  const overrideName = manual.facility_name_override.trim();
   const rows = facility
     ? [
-        ["Name of Facility", manual.facility_name_override || facility.provider_name],
+        ["Name of Facility", overrideName || facility.provider_name],
         ["Location", facility.location],
         ["EMR", manual.emr],
         ["Census Capacity", display(facility.census_capacity)],
