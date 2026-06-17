@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     cms_state_averages_dataset_id: str = "xcdc-v8bm"
     apply_case_reference_snapshot: bool = True
     cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
+    cors_origin_regex: str | None = r"https://.*\.vercel\.app"
     backend_port: int = 8000
 
     model_config = SettingsConfigDict(

@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: medelite-report-gen-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -e backend
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.13
+      - key: CMS_API_BASE_URL
+        value: https://data.cms.gov/provider-data/api/1/datastore/query
+      - key: CMS_PROVIDER_DATASET_ID
+        value: 4pq5-n9py
+      - key: CMS_CLAIMS_DATASET_ID
+        value: ijh5-nb2v
+      - key: CMS_STATE_AVERAGES_DATASET_ID
+        value: xcdc-v8bm
+      - key: APPLY_CASE_REFERENCE_SNAPSHOT
+        value: true
+      - key: CORS_ORIGINS
+        value: http://localhost:3000,http://127.0.0.1:3000
+      - key: CORS_ORIGIN_REGEX
+        value: https://.*\.vercel\.app

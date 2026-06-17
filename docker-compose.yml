@@ -11,6 +11,7 @@ services:
       CMS_STATE_AVERAGES_DATASET_ID: ${CMS_STATE_AVERAGES_DATASET_ID:-xcdc-v8bm}
       APPLY_CASE_REFERENCE_SNAPSHOT: ${APPLY_CASE_REFERENCE_SNAPSHOT:-true}
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+      CORS_ORIGIN_REGEX: ${CORS_ORIGIN_REGEX:-https://.*\.vercel\.app}
     ports:
       - "${BACKEND_PORT:-8000}:8000"
 

@@ -32,6 +32,10 @@ cd frontend && npm run dev
 | `make lint` | Run Ruff, Black check, and ESLint |
 | `make typecheck` | Run mypy and TypeScript checks |
 
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the Render backend and Vercel frontend setup.
+
 ## Test Case
 
 Use CCN `686123` for Kendall Lakes Healthcare and Rehab Center.
