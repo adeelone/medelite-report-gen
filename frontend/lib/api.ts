@@ -1,6 +1,6 @@
 import type { ExportKind, FacilityData, ReportPayload } from "./types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const API_URL = "";
 
 export async function lookupFacility(ccn: string): Promise<FacilityData> {
   const response = await fetch(`${API_URL}/api/lookup?ccn=${encodeURIComponent(ccn)}`, {
