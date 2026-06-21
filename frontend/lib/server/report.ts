@@ -1,5 +1,9 @@
 import type { FacilityData, ReportPayload } from "@/lib/types";
 
+export const BRAND_TEXT = "INFINITE — Managed by MEDELITE";
+export const SOURCE_NOTICE =
+  "Data source: CMS Provider Data Catalog and Medicare Care Compare. Demo summary only; verify current CMS data before operational decisions.";
+
 export const claimOrder = [
   "Short Term Hospitalization",
   "STR National Avg. for Hospitalization",

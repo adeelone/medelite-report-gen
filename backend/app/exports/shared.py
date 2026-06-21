@@ -2,6 +2,11 @@ from __future__ import annotations
 
 from app.models import ReportPayload
 
+SOURCE_NOTICE = (
+    "Data source: CMS Provider Data Catalog and Medicare Care Compare. Demo summary only; "
+    "verify current CMS data before operational decisions."
+)
+
 CLAIMS_ORDER = [
     "Short Term Hospitalization",
     "STR National Avg. for Hospitalization",

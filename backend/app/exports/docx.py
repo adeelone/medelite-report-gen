@@ -11,7 +11,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
-from app.exports.shared import medicare_url, report_rows
+from app.exports.shared import SOURCE_NOTICE, medicare_url, report_rows
 from app.models import ReportPayload
 
 
@@ -48,6 +48,7 @@ def build_docx(payload: ReportPayload) -> bytes:
     document.add_paragraph()
     p = document.add_paragraph()
     _add_hyperlink(p, "Medicare Care Compare source profile", medicare_url(payload.facility.ccn))
+    document.add_paragraph(SOURCE_NOTICE)
 
     buffer = BytesIO()
     document.save(buffer)

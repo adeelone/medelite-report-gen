@@ -8,7 +8,7 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
-from app.exports.shared import medicare_url, report_rows
+from app.exports.shared import SOURCE_NOTICE, medicare_url, report_rows
 from app.models import ReportPayload
 
 
@@ -79,6 +79,7 @@ def build_pdf(payload: ReportPayload) -> bytes:
         table,
         Spacer(1, 0.2 * inch),
         Paragraph(f'<a href="{url}">Medicare Care Compare source profile</a>', link_style),
+        Paragraph(SOURCE_NOTICE, link_style),
     ]
     doc.build(story)
     return buffer.getvalue()

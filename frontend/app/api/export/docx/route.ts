@@ -10,7 +10,7 @@ import {
   TextRun,
   WidthType,
 } from "docx";
-import { medicareUrl, reportRows } from "@/lib/server/report";
+import { BRAND_TEXT, SOURCE_NOTICE, medicareUrl, reportRows } from "@/lib/server/report";
 import type { ReportPayload } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -51,7 +51,7 @@ async function buildDocx(payload: ReportPayload): Promise<Buffer> {
       {
         properties: {},
         children: [
-          centered("INFINITE — Managed by MEDELITE", 28, true),
+          centered(BRAND_TEXT, 28, true),
           centered("FACILITY ASSESSMENT SNAPSHOT", 24, true),
           centered(payload.facility.state || "", 22, true),
           new Paragraph({ text: "" }),
@@ -69,6 +69,9 @@ async function buildDocx(payload: ReportPayload): Promise<Buffer> {
                 ],
               }),
             ],
+          }),
+          new Paragraph({
+            children: [new TextRun({ text: SOURCE_NOTICE, size: 16, color: "687185" })],
           }),
         ],
       },

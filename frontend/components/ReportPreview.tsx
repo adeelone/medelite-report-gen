@@ -1,4 +1,5 @@
 import React from "react";
+import { BRAND_TEXT, SOURCE_NOTICE } from "@/lib/server/report";
 import type { FacilityData, ManualInputs } from "@/lib/types";
 
 const claimOrder = [
@@ -45,21 +46,24 @@ export function ReportPreview({ facility, manual }: Props) {
   return (
     <section className="previewPanel">
       <div className="brandBlock">
-        <div>INFINITE — Managed by MEDELITE</div>
+        <div>{BRAND_TEXT}</div>
         <strong>FACILITY ASSESSMENT SNAPSHOT</strong>
         <span>{facility?.state ?? ""}</span>
       </div>
       {facility ? (
-        <table className="snapshotTable">
-          <tbody>
-            {rows.map(([label, value]) => (
-              <tr key={label}>
-                <th>{label}</th>
-                <td>{value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <>
+          <table className="snapshotTable">
+            <tbody>
+              {rows.map(([label, value]) => (
+                <tr key={label}>
+                  <th>{label}</th>
+                  <td>{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="sourceNotice">{SOURCE_NOTICE}</p>
+        </>
       ) : (
         <div className="emptyState">Enter a CCN and run lookup to populate the snapshot.</div>
       )}

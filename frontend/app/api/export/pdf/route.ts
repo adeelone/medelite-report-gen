@@ -1,5 +1,5 @@
 import { PDFDocument, PDFName, PDFPage, PDFString, StandardFonts, rgb } from "pdf-lib";
-import { medicareUrl, reportRows } from "@/lib/server/report";
+import { BRAND_TEXT, SOURCE_NOTICE, medicareUrl, reportRows } from "@/lib/server/report";
 import type { ReportPayload } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -27,7 +27,7 @@ async function buildPdf(payload: ReportPayload): Promise<Uint8Array> {
   const gray = rgb(0.95, 0.96, 0.98);
   let y = 748;
 
-  drawCentered(page, "INFINITE — Managed by MEDELITE", 14, y, bold, dark);
+  drawCentered(page, BRAND_TEXT, 14, y, bold, dark);
   y -= 20;
   drawCentered(page, "FACILITY ASSESSMENT SNAPSHOT", 12, y, bold, dark);
   y -= 18;
@@ -46,6 +46,8 @@ async function buildPdf(payload: ReportPayload): Promise<Uint8Array> {
   y -= 10;
   page.drawText("Medicare Care Compare source profile", { x: 44, y, size: 9, font: regular, color: blue });
   addLink(pdf, page, url, 44, y - 2, 190, 12);
+  y -= 16;
+  page.drawText(SOURCE_NOTICE, { x: 44, y, size: 7.2, font: regular, color: rgb(0.36, 0.4, 0.48) });
   return pdf.save();
 }
 
@@ -85,5 +87,5 @@ function addLink(
 }
 
 function truncate(value: string, maxLength: number): string {
-  return value.length > maxLength ? `${value.slice(0, maxLength - 1)}…` : value;
+  return value.length > maxLength ? `${value.slice(0, maxLength - 1)}â€¦` : value;
 }

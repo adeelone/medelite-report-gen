@@ -36,6 +36,10 @@ cd frontend && npm run dev
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for the Render backend and Vercel frontend setup.
 
+## Notice
+
+See [NOTICE.md](NOTICE.md) for the demo, data-source, and verification notice. Demo code is provided under the [MIT License](LICENSE).
+
 ## Test Case
 
 Use CCN `686123` for Kendall Lakes Healthcare and Rehab Center.
