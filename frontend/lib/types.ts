@@ -28,7 +28,7 @@ export type ManualInputs = {
 
 export type ReportPayload = {
   facility: FacilityData;
-  manual: Omit<ManualInputs, "current_census"> & { current_census: number };
+  manual: ManualInputs;
 };
 
 export type ExportKind = "pdf" | "docx";

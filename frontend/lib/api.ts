@@ -20,15 +20,17 @@ export async function downloadExport(kind: ExportKind, payload: ReportPayload): 
     body: JSON.stringify(payload),
   });
   if (!response.ok) {
-    throw new Error(`Unable to export ${kind.toUpperCase()}`);
+    const body = await response.json().catch(() => ({ error: `Unable to export ${kind.toUpperCase()}` }));
+    throw new Error(body.error ?? `Unable to export ${kind.toUpperCase()}`);
   }
   const blob = await response.blob();
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
   link.download = `facility-assessment-${payload.facility.ccn}.${kind}`;
+  link.rel = "noopener";
   document.body.appendChild(link);
   link.click();
   link.remove();
-  URL.revokeObjectURL(url);
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

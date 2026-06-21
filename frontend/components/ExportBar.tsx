@@ -16,7 +16,7 @@ export function ExportBar({ canExport, exporting, error, onExport }: Props) {
         {exporting === "pdf" ? "Preparing PDF" : "Download PDF"}
       </button>
       <button type="button" disabled={!canExport || exporting !== null} onClick={() => onExport("docx")}>
-        {exporting === "docx" ? "Preparing Word" : "Download Word"}
+        {exporting === "docx" ? "Preparing Word" : "Download Word (.docx)"}
       </button>
       {error ? <span className="errorText">{error}</span> : null}
     </div>

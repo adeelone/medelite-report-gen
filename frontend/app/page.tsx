@@ -29,19 +29,12 @@ export default function Home() {
   const [exporting, setExporting] = useState<ExportKind | null>(null);
 
   const payload = useMemo<ReportPayload | null>(() => {
-    if (!facility || manual.current_census === "") {
-      return null;
-    }
-    const required = [manual.emr, manual.patient_type, manual.previous_performance, manual.medical_coverage];
-    if (required.some((value) => value.trim() === "")) {
+    if (!facility) {
       return null;
     }
     return {
       facility,
-      manual: {
-        ...manual,
-        current_census: manual.current_census,
-      },
+      manual,
     };
   }, [facility, manual]);
 

@@ -26,13 +26,13 @@ export function reportRows(payload: ReportPayload): Array<[string, string]> {
   const rows: Array<[string, string]> = [
     ["Name of Facility", overrideName || facility.provider_name],
     ["Location", facility.location],
-    ["EMR", manual.emr],
+    ["EMR", displayText(manual.emr)],
     ["Census Capacity", display(facility.census_capacity)],
     ["Current Census", display(manual.current_census)],
-    ["Type of Patient", manual.patient_type],
+    ["Type of Patient", displayText(manual.patient_type)],
     ["Previous Coverage from Medelite", manual.previous_coverage ? "Yes" : "No"],
-    ["Previous Provider Performance from Medelite", manual.previous_performance],
-    ["Medical Coverage", manual.medical_coverage],
+    ["Previous Provider Performance from Medelite", displayText(manual.previous_performance)],
+    ["Medical Coverage", displayText(manual.medical_coverage)],
     ["Overall Star Rating", display(facility.overall_star_rating)],
     ["Health Inspection", display(facility.health_inspection_rating)],
     ["Staffing", display(facility.staffing_rating)],
@@ -83,4 +83,8 @@ export function applyCaseReferenceSnapshot(facility: FacilityData): FacilityData
 
 export function display(value: unknown): string {
   return value === null || value === undefined || value === "" ? "N/A" : String(value);
+}
+
+function displayText(value: string): string {
+  return value.trim() || "N/A";
 }
